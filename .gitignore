@@ -1,0 +1,15 @@
+*
+!.gitignore
+!README.md
+!.env.example
+!requirements.txt
+!*.py
+!*.conf
+!*.service
+!setup.sh
+!tests/
+!tests/*.py
+!cookies/
+!tmp/
+!logs/
+!.gitkeep

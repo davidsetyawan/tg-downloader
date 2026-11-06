@@ -1,0 +1,18 @@
+# install: mkdir -p ~/.config/systemd/user && cp tg-gallery-bot.service ~/.config/systemd/user/
+#          systemctl --user daemon-reload && systemctl --user enable --now tg-gallery-bot
+#          loginctl enable-linger $USER      # keep running after logout
+# logs:    journalctl --user -u tg-gallery-bot -f   (or logs/bot.log)
+[Unit]
+Description=Telegram gallery-dl bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/tg-gallery-bot
+ExecStart=%h/tg-gallery-bot/.venv/bin/python bot.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
