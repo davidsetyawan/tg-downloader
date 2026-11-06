@@ -17,7 +17,8 @@ class ParserTests(unittest.TestCase):
     def test_twitter_posts(self):
         T, P = Platform.TWITTER, Kind.POST
         self.check("https://x.com/jack/status/20", T, P, "https://x.com/jack/status/20", "jack")
-        self.check("https://twitter.com/jack/status/20?s=46&t=abc", T, P, "https://x.com/jack/status/20", "jack")
+        self.check("https://twitter.com/jack/status/20?s=46&t=abc&utm_source=feed",
+                   T, P, "https://x.com/jack/status/20", "jack")
         self.check("https://mobile.twitter.com/jack/status/20/photo/1", T, P, "https://x.com/jack/status/20", "jack")
         self.check("look https://x.com/i/web/status/20 wow", T, P, "https://x.com/i/web/status/20", None)
 
@@ -42,6 +43,14 @@ class ParserTests(unittest.TestCase):
         self.check("https://www.instagram.com/some.one_/reels/", I, Kind.PROFILE, "https://www.instagram.com/some.one_/reels/", "some.one_")
         self.check("https://www.instagram.com/stories/someone/", I, Kind.STORIES, "https://www.instagram.com/stories/someone/", "someone")
         self.check("https://www.instagram.com/stories/highlights/1789/", I, Kind.HIGHLIGHT, "https://www.instagram.com/stories/highlights/1789/", None)
+        self.check(
+            "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDI4NzM2Mzk5ODUyMjIy"
+            "?story_media_id=3940683407982547369_49982708705&igsh=abc&utm_source=share",
+            I,
+            Kind.HIGHLIGHT,
+            "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDI4NzM2Mzk5ODUyMjIy/",
+            None,
+        )
         self.assertIsNone(parse_message("https://www.instagram.com/explore/"))
         self.assertIsNone(parse_message("https://www.instagram.com/accounts/login/"))
 

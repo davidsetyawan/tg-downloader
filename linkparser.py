@@ -125,6 +125,13 @@ def parse_url(raw: str) -> ParsedLink | None:
     if host in ("x.com", "twitter.com"):
         return _twitter(segs)
     if host == "instagram.com":
+        if len(segs) == 2 and segs[0] == "s":
+            return ParsedLink(
+                Platform.INSTAGRAM,
+                Kind.HIGHLIGHT,
+                f"https://www.instagram.com/s/{segs[1]}/",
+                None,
+            )
         return _instagram(segs)
     return None
 

@@ -16,7 +16,7 @@ Get your Telegram ID by sending `/id` to the bot (works for anyone, nothing else
 
 ## Usage
 - Post / reel / single story link: media, caption, `by: user`, post link.
-- Profile / `instagram.com/stories/<user>` / highlight: downloads everything, media + username link. No item limit.
+- Profile / `instagram.com/stories/<user>` / highlight (including `instagram.com/s/<id>` share links): downloads everything, media + username link. No item limit.
   Files are sent in albums of 10 as soon as they are downloaded (then deleted from `tmp/`), so disk use stays small and results show up early.
   The username link is on the first album. gallery-dl is paused while an album uploads. A profile stops if no new file arrives for `PROFILE_IDLE_TIMEOUT` seconds (default 300); there is no total time limit.
   While one profile runs, other requests wait (`MAX_CONCURRENT=1`); `/cancel` stops it.
