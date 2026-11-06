@@ -129,7 +129,7 @@ def parse_url(raw: str) -> ParsedLink | None:
             return ParsedLink(
                 Platform.INSTAGRAM,
                 Kind.HIGHLIGHT,
-                f"https://www.instagram.com/s/{segs[1]}/",
+                f"https://www.instagram.com/s/{segs[1]}",
                 None,
             )
         return _instagram(segs)

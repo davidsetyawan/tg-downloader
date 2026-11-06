@@ -48,7 +48,7 @@ class ParserTests(unittest.TestCase):
             "?story_media_id=3940683407982547369_49982708705&igsh=abc&utm_source=share",
             I,
             Kind.HIGHLIGHT,
-            "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDI4NzM2Mzk5ODUyMjIy/",
+            "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDI4NzM2Mzk5ODUyMjIy",
             None,
         )
         self.assertIsNone(parse_message("https://www.instagram.com/explore/"))
